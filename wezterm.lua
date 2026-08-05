@@ -247,9 +247,17 @@ end)
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 config.keys = {
+  -- Split Horizontal (Ctrl+Shift+\ or Ctrl+\ or Ctrl+|)
   { key = '\\', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '|', mods = 'CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = '\\', mods = 'CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+
+  -- Split Vertical (Ctrl+Shift+- or Ctrl+- or Ctrl+_)
   { key = '-', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = '_', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '_', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '-', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'LeftArrow', mods = 'ALT', action = act.ActivatePaneDirection 'Left' },
   { key = 'RightArrow', mods = 'ALT', action = act.ActivatePaneDirection 'Right' },
   { key = 'UpArrow', mods = 'ALT', action = act.ActivatePaneDirection 'Up' },
