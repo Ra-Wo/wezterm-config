@@ -48,11 +48,9 @@ end
 -- ----------------------------------------------------------------------------
 config.color_scheme = 'Dracula'
 
--- Translucent Acrylic Background Blur
-config.window_background_opacity = 0.88
-config.win32_system_backdrop = 'Acrylic'
-config.macos_window_background_blur = 20
-config.wayland_window_background_blur = true
+-- Very subtle transparency (94% opaque)
+config.window_background_opacity = 0.94
+config.win32_system_backdrop = 'Disable'
 
 -- Compact padding & window frame
 config.window_decorations = 'RESIZE'
