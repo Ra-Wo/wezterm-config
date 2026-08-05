@@ -46,7 +46,36 @@ end
 -- ----------------------------------------------------------------------------
 -- 2. Theme & Visual Aesthetics
 -- ----------------------------------------------------------------------------
-config.color_scheme = 'Dracula'
+-- Load Dracula theme and customize selection highlight
+local dracula = wezterm.color.get_builtin_schemes()['Dracula']
+dracula.selection_bg = '#bd93f9'  -- Dracula Purple active highlight
+dracula.selection_fg = '#282a36'  -- Dark text for high contrast
+
+dracula.tab_bar = {
+  background = '#282a36',
+  active_tab = {
+    bg_color = '#44475a',
+    fg_color = '#bd93f9',
+  },
+  inactive_tab = {
+    bg_color = '#282a36',
+    fg_color = '#6272a4',
+  },
+  inactive_tab_hover = {
+    bg_color = '#343746',
+    fg_color = '#f8f8f2',
+  },
+  new_tab = {
+    bg_color = '#282a36',
+    fg_color = '#6272a4',
+  },
+  new_tab_hover = {
+    bg_color = '#343746',
+    fg_color = '#f8f8f2',
+  },
+}
+
+config.colors = dracula
 
 -- Very subtle transparency (94% opaque)
 config.window_background_opacity = 0.94
@@ -97,32 +126,6 @@ config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = true
 config.status_update_interval = 1000
 config.show_tab_index_in_tab_bar = false
-
-config.colors = {
-  tab_bar = {
-    background = '#282a36',
-    active_tab = {
-      bg_color = '#44475a',
-      fg_color = '#bd93f9',
-    },
-    inactive_tab = {
-      bg_color = '#282a36',
-      fg_color = '#6272a4',
-    },
-    inactive_tab_hover = {
-      bg_color = '#343746',
-      fg_color = '#f8f8f2',
-    },
-    new_tab = {
-      bg_color = '#282a36',
-      fg_color = '#6272a4',
-    },
-    new_tab_hover = {
-      bg_color = '#343746',
-      fg_color = '#f8f8f2',
-    },
-  },
-}
 
 -- Process icon helper
 local function get_process_icon(process_name)
@@ -265,7 +268,7 @@ config.keys = {
   { key = 't', mods = 'CTRL|SHIFT', action = act.SpawnTab 'CurrentPaneDomain' },
   { key = 'w', mods = 'CTRL|SHIFT', action = act.CloseCurrentTab { confirm = true } },
   { key = 'f', mods = 'CTRL|SHIFT', action = act.Search 'CurrentSelectionOrEmptyString' },
-  { key = 'P', mods = 'CTRL|SHIFT', action = act.ActivateCommandPalette },
+  { key = 'P', mods = 'CTRL|SHIFT', action = act.ShowLauncherArgs { flags = 'FUZZY|COMMANDS', title = '  Command Palette' } },
   -- Debug overlay (Ctrl+Shift+L)
   { key = 'l', mods = 'CTRL|SHIFT', action = act.ShowDebugOverlay },
   -- Rename current tab  (Ctrl+Shift+R)
@@ -327,6 +330,16 @@ config.keys = {
 
 -- ----------------------------------------------------------------------------
 -- 6. Command Palette Customization & Custom Actions
+-- ----------------------------------------------------------------------------
+config.command_palette_font = wezterm.font_with_fallback {
+  { family = 'JetBrains Mono', weight = 'Medium' },
+  { family = 'JetBrainsMono Nerd Font', weight = 'Medium' },
+}
+config.command_palette_font_size = 11.0
+config.command_palette_rows = 12
+config.command_palette_bg_color = '#282a36'
+config.command_palette_fg_color = '#f8f8f2'
+
 -- Add custom quick actions directly into Command Palette (Ctrl+Shift+P)
 wezterm.on('augment-command-palette', function(window, pane)
   return {
