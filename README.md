@@ -2,6 +2,8 @@
 
 A high-performance, aesthetically refined [WezTerm](https://wezfurlong.org/wezterm/) terminal configuration built for productivity, workspace management, and seamless visual harmony.
 
+![WezTerm Preview](assets/screenshot.png)
+
 ---
 
 ## 🔑 Keys & Keybindings
@@ -21,8 +23,8 @@ Below is the complete map of custom keyboard shortcuts configured in this setup.
 
 | Shortcut | Action | Description |
 | :--- | :--- | :--- |
-| `Ctrl + Shift + \` | **Split Horizontal** | Split active pane horizontally in current domain |
-| `Ctrl + Shift + -` | **Split Vertical** | Split active pane vertically in current domain |
+| `Leader + H` | **Split Horizontal** | Split active pane horizontally in current domain |
+| `Leader + V` | **Split Vertical** | Split active pane vertically in current domain |
 | `Alt + ←` | **Focus Left** | Move cursor/focus to left pane |
 | `Alt + →` | **Focus Right** | Move cursor/focus to right pane |
 | `Alt + ↑` | **Focus Up** | Move cursor/focus to top pane |

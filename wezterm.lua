@@ -11,8 +11,8 @@
 --
 -- KEYS QUICK REFERENCE:
 --   Leader Prefix    : Ctrl + A (1000ms timeout)
---   Split Horizontal : Ctrl + Shift + \
---   Split Vertical   : Ctrl + Shift + -
+--   Split Horizontal : Leader + H
+--   Split Vertical   : Leader + V
 --   Navigate Panes   : Alt + Arrow Keys (Left/Right/Up/Down)
 --   New Tab          : Ctrl + Shift + T
 --   Close Tab        : Ctrl + Shift + W
@@ -250,17 +250,13 @@ end)
 config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 
 config.keys = {
-  -- Split Horizontal (Ctrl+Shift+\ or Ctrl+\ or Ctrl+|)
-  { key = '\\', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = '|', mods = 'CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = '\\', mods = 'CTRL', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  -- Split Horizontal (Leader + H / h)
+  { key = 'h', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'H', mods = 'LEADER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
 
-  -- Split Vertical (Ctrl+Shift+- or Ctrl+- or Ctrl+_)
-  { key = '-', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '_', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '_', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '-', mods = 'CTRL', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  -- Split Vertical (Leader + V / v)
+  { key = 'v', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = 'V', mods = 'LEADER', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = 'LeftArrow', mods = 'ALT', action = act.ActivatePaneDirection 'Left' },
   { key = 'RightArrow', mods = 'ALT', action = act.ActivatePaneDirection 'Right' },
   { key = 'UpArrow', mods = 'ALT', action = act.ActivatePaneDirection 'Up' },
