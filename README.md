@@ -1,46 +1,89 @@
 # WezTerm Configuration
 
-A premium, customized [WezTerm](https://wezfurlong.org/wezterm/) terminal configuration styled with the **Dracula** theme, customized bottom tab bar, automatic process icons, workspace management shortcuts, and alert auto-focus behavior.
+A high-performance, aesthetically refined [WezTerm](https://wezfurlong.org/wezterm/) terminal configuration built for productivity, workspace management, and seamless visual harmony.
+
+---
+
+## 📖 About
+
+This project provides an opinionated, production-ready configuration for **WezTerm** on Windows, macOS, and Linux. Built with a focus on visual elegance, speed, and workflow efficiency, it turns WezTerm into a modern developer workbench.
+
+### Key Highlights:
+- **🎨 Dracula Design System**: Unified Dracula color scheme matching `#282a36` across active panes, window frame titlebars, and status bars for a cohesive look without distraction.
+- **⚡ Hardware Acceleration**: Utilizes `WebGpu` rendering locked at 60 FPS with 10,000 lines of scrollback buffer and automatic configuration reloading.
+- **🔤 Modern Typography**: Configured with font fallback hierarchy supporting `JetBrains Mono`, `JetBrainsMono Nerd Font`, `FiraCode Nerd Font`, and `Symbols Nerd Font Mono` with HarfBuzz ligatures (`calt`, `clig`, `liga`, `zero`).
+- **📊 Custom Pill Tab & Status Bar**: Placed cleanly at the bottom (`tab_bar_at_bottom = true`) featuring dynamic process detection icons (Git Bash, PowerShell, CMD, WSL, Node, Python, Neovim), path truncation, Leader status indicators, and active workspace tracking.
+- **🔔 Screen Alert Focus**: Automatically brings the terminal window to the front across all monitors when a terminal bell sequence (`\a`) occurs, combined with system sound notification (`SystemBeep`).
+- **🗂️ Workspace Architecture**: Full lifecycle management for WezTerm workspaces with one-touch creation, switching, renaming, and workspace termination.
+
+---
+
+## 🔑 Keys & Keybindings
+
+Below is the complete map of custom keyboard shortcuts configured in this setup.
+
+### 👑 Leader Key
+> **Leader Combination**: `Ctrl + A` (Timeout: 1000 ms)
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Ctrl + A` | **Leader Prefix** | Press `Ctrl + A` followed by a key below within 1 second |
+
+---
+
+### 🪟 Pane Management & Navigation
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Leader + |` | **Split Horizontal** | Split active pane horizontally in current domain |
+| `Leader + -` | **Split Vertical** | Split active pane vertically in current domain |
+| `Alt + ←` | **Focus Left** | Move cursor/focus to left pane |
+| `Alt + →` | **Focus Right** | Move cursor/focus to right pane |
+| `Alt + ↑` | **Focus Up** | Move cursor/focus to top pane |
+| `Alt + ↓` | **Focus Down** | Move cursor/focus to bottom pane |
+
+---
+
+### 📑 Tab Management
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Ctrl + Shift + T` | **New Tab** | Spawn a new tab in current domain |
+| `Ctrl + Shift + W` | **Close Tab** | Close current tab (prompts confirmation) |
+| `Ctrl + Shift + R` | **Rename Tab** | Open interactive input prompt to rename active tab |
+| `Ctrl + Shift + F` | **Search** | Trigger terminal search for selection or empty string |
+
+---
+
+### 🗂️ Workspace Management
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Ctrl + Shift + N` | **New Workspace** | Interactive prompt to create a new workspace window |
+| `Ctrl + Shift + S` | **Switch Workspace** | Open interactive launcher to switch between active workspaces |
+| `Ctrl + Shift + K` | **Kill Workspace** | Immediately terminate all tabs & panes in active workspace |
+
+---
+
+### 🛠️ System & Utilities
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `Ctrl + Shift + P` | **Command Palette** | Open WezTerm interactive command palette |
+| `Ctrl + Shift + L` | **Debug Overlay** | Toggle WezTerm Lua debug overlay |
 
 ---
 
 ## 🎨 Features
 
-- **Dracula Palette Integration**: Seamless colors matching the content background (`#282a36`) across the main window, window frames, and bottom tab bar.
-- **Custom Bottom Status & Tab Bar**:
-  - Displays at the bottom of the window (`tab_bar_at_bottom = true`).
-  - Active/inactive tab pills with custom font fallback (`JetBrains Mono` / `Nerd Fonts`).
-  - Dynamic process icons for `bash`/`git`, `pwsh`/`powershell`, `cmd`, `wsl`, `node`, `python`, and `nvim`/`vim`.
-  - Clean CWD formatting with `~` substitution and Windows path normalization.
-  - Displays Leader key status and active workspace name.
-- **Auto-Focus & Alert Notifications**:
-  - Automatically pops up the terminal window on top of all open screens when a bell/alert (`\a`) sequence occurs.
-  - Plays the system audible beep (`SystemBeep`).
-- **Workspace Shortcuts**:
-  - Create, switch, rename, and kill entire workspaces with quick keybindings.
+- **Dracula Palette Integration**: Unified `#282a36` background color across tabs, window decorations, and main content area.
+- **Dynamic Process Icons**: Auto-detects running process (`bash`, `pwsh`, `cmd`, `node`, `python`, `nvim`, etc.) and renders corresponding Nerd Font icons.
+- **Path Formatting**: Automatically converts home directory paths to `~` and normalizes Windows drive letters.
+- **Sound & Alert Behavior**: Auto-focuses window over screens on terminal bell and plays system sound.
 
 ---
 
-## ⌨️ Keybindings Reference
-
-| Action | Shortcut | Description |
-| :--- | :--- | :--- |
-| **Leader Key** | `Ctrl + A` | Timeout: 1000ms |
-| **Split Horizontal** | `Leader + |` | Split current pane horizontally |
-| **Split Vertical** | `Leader + -` | Split current pane vertically |
-| **Navigate Panes** | `Alt + ← / → / ↑ / ↓` | Move focus between split panes |
-| **New Tab** | `Ctrl + Shift + T` | Open new tab in current pane domain |
-| **Close Current Tab** | `Ctrl + Shift + W` | Close active tab (with confirmation) |
-| **Rename Tab** | `Ctrl + Shift + R` | Interactive tab title prompt |
-| **New Workspace** | `Ctrl + Shift + N` | Interactive workspace name prompt |
-| **Switch Workspace** | `Ctrl + Shift + S` | Open workspace launcher menu |
-| **Kill Current Workspace** | `Ctrl + Shift + K` | Instantly close all tabs & panes in active workspace |
-| **Command Palette** | `Ctrl + Shift + P` | Open WezTerm command palette |
-| **Debug Overlay** | `Ctrl + Shift + L` | Open WezTerm debug overlay |
-
----
-
-## 🚀 Installation & Usage
+## 🚀 Quick Start & Installation
 
 1. **Clone the repository**:
    ```bash
@@ -48,7 +91,7 @@ A premium, customized [WezTerm](https://wezfurlong.org/wezterm/) terminal config
    ```
 
 2. **Copy configuration to user home directory**:
-   - **Windows**:
+   - **Windows (PowerShell)**:
      ```powershell
      Copy-Item -Path .\wezterm.lua -Destination $env:USERPROFILE\.wezterm.lua -Force
      ```
@@ -59,5 +102,5 @@ A premium, customized [WezTerm](https://wezfurlong.org/wezterm/) terminal config
      mkdir -p ~/.config/wezterm && cp wezterm.lua ~/.config/wezterm/wezterm.lua
      ```
 
-3. **Reload Configuration**:
-   WezTerm will automatically reload when `.wezterm.lua` is modified (`automatically_reload_config = true`).
+3. **Reload**:
+   WezTerm will automatically reload settings upon saving changes to `wezterm.lua`.

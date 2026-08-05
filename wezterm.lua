@@ -1,6 +1,28 @@
 -- ============================================================================
 -- Antigravity Premium WezTerm Configuration
 -- Theme: Dracula
+--
+-- ABOUT:
+--   A high-performance, aesthetically refined WezTerm setup featuring:
+--   - Dracula color palette with matching content & tab bar backgrounds (#282a36)
+--   - Custom pill tab & status bar at the bottom with dynamic process icons & CWD
+--   - Window auto-focus over all screens on alert/bell trigger + system sound
+--   - Comprehensive workspace creation, switching, and termination shortcuts
+--
+-- KEYS QUICK REFERENCE:
+--   Leader Prefix    : Ctrl + A (1000ms timeout)
+--   Split Horizontal : Leader + |
+--   Split Vertical   : Leader + -
+--   Navigate Panes   : Alt + Arrow Keys (Left/Right/Up/Down)
+--   New Tab          : Ctrl + Shift + T
+--   Close Tab        : Ctrl + Shift + W
+--   Rename Tab       : Ctrl + Shift + R
+--   Search           : Ctrl + Shift + F
+--   New Workspace    : Ctrl + Shift + N
+--   Switch Workspace : Ctrl + Shift + S
+--   Kill Workspace   : Ctrl + Shift + K
+--   Command Palette  : Ctrl + Shift + P
+--   Debug Overlay    : Ctrl + Shift + L
 -- ============================================================================
 
 local wezterm = require 'wezterm'
