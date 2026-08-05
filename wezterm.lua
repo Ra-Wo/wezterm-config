@@ -52,7 +52,6 @@ config.color_scheme = 'Dracula'
 config.window_background_opacity = 0.88
 config.win32_system_backdrop = 'Acrylic'
 config.macos_window_background_blur = 20
-config.kde_window_background_blur = true
 config.wayland_window_background_blur = true
 
 -- Compact padding & window frame
