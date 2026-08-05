@@ -327,16 +327,6 @@ config.keys = {
 
 -- ----------------------------------------------------------------------------
 -- 6. Command Palette Customization & Custom Actions
--- ----------------------------------------------------------------------------
-config.command_palette_font = wezterm.font_with_fallback {
-  { family = 'JetBrains Mono', weight = 'Medium' },
-  { family = 'JetBrainsMono Nerd Font', weight = 'Medium' },
-}
-config.command_palette_font_size = 10.0
-config.command_palette_rows = 12
-config.command_palette_bg_color = '#21222c'  -- Dracula dark popup
-config.command_palette_fg_color = '#f8f8f2'  -- Dracula foreground
-
 -- Add custom quick actions directly into Command Palette (Ctrl+Shift+P)
 wezterm.on('augment-command-palette', function(window, pane)
   return {
