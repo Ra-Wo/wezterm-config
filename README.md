@@ -21,8 +21,8 @@ Below is the complete map of custom keyboard shortcuts configured in this setup.
 
 | Shortcut | Action | Description |
 | :--- | :--- | :--- |
-| `Leader + |` | **Split Horizontal** | Split active pane horizontally in current domain |
-| `Leader + -` | **Split Vertical** | Split active pane vertically in current domain |
+| `Ctrl + Shift + \` | **Split Horizontal** | Split active pane horizontally in current domain |
+| `Ctrl + Shift + -` | **Split Vertical** | Split active pane vertically in current domain |
 | `Alt + ←` | **Focus Left** | Move cursor/focus to left pane |
 | `Alt + →` | **Focus Right** | Move cursor/focus to right pane |
 | `Alt + ↑` | **Focus Up** | Move cursor/focus to top pane |
