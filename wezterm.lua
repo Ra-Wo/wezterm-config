@@ -325,7 +325,75 @@ config.keys = {
   },
 }
 
+-- ----------------------------------------------------------------------------
+-- 6. Command Palette Customization & Custom Actions
+-- ----------------------------------------------------------------------------
+config.command_palette_font = wezterm.font_with_fallback {
+  { family = 'JetBrains Mono', weight = 'Medium' },
+  { family = 'JetBrainsMono Nerd Font', weight = 'Medium' },
+}
+config.command_palette_font_size = 10.0
+config.command_palette_rows = 12
+config.command_palette_bg_color = '#21222c'  -- Dracula dark popup
+config.command_palette_fg_color = '#f8f8f2'  -- Dracula foreground
 
-
+-- Add custom quick actions directly into Command Palette (Ctrl+Shift+P)
+wezterm.on('augment-command-palette', function(window, pane)
+  return {
+    {
+      brief = 'Workspace: New Workspace',
+      icon = 'md_folder_plus',
+      action = act.PromptInputLine {
+        description = 'Enter new workspace name',
+        action = wezterm.action_callback(function(win, p, line)
+          if line and #line > 0 then
+            mux.spawn_window({ workspace = line })
+          end
+        end),
+      },
+    },
+    {
+      brief = 'Workspace: Switch Workspace',
+      icon = 'md_folder_switch',
+      action = act.ShowLauncherArgs { flags = 'WORKSPACES', title = 'Switch Workspace' },
+    },
+    {
+      brief = 'Workspace: Kill Current Workspace',
+      icon = 'md_folder_remove',
+      action = wezterm.action_callback(function(win, p)
+        local current_ws = win:active_workspace()
+        for _, w in ipairs(mux.all_windows()) do
+          if w:get_workspace() == current_ws then
+            for _, tab in ipairs(w:tabs()) do
+              for _, pane_item in ipairs(tab:panes()) do
+                win:perform_action(act.CloseCurrentPane { confirm = false }, pane_item)
+              end
+            end
+          end
+        end
+      end),
+    },
+    {
+      brief = 'Tab: Rename Active Tab',
+      icon = 'md_rename_box',
+      action = act.PromptInputLine {
+        description = 'Enter new tab title',
+        action = wezterm.action_callback(function(win, p, line)
+          if line then win:active_tab():set_title(line) end
+        end),
+      },
+    },
+    {
+      brief = 'Pane: Split Horizontal',
+      icon = 'md_view_column',
+      action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    },
+    {
+      brief = 'Pane: Split Vertical',
+      icon = 'md_view_stream',
+      action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+    },
+  }
+end)
 
 return config

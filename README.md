@@ -62,6 +62,7 @@ Below is the complete map of custom keyboard shortcuts configured in this setup.
 
 ## 🎨 Features
 
+- **Command Palette Customization**: Custom Dracula dark styling (`#21222c`), font size, and augmented quick-action items with Nerd Font icons for tab renaming, workspace switching, creation, and pane splitting.
 - **Dracula Palette Integration**: Unified `#282a36` background color across tabs, window decorations, and main content area.
 - **Dynamic Process Icons**: Auto-detects running process (`bash`, `pwsh`, `cmd`, `node`, `python`, `nvim`, etc.) and renders corresponding Nerd Font icons.
 - **Path Formatting**: Automatically converts home directory paths to `~` and normalizes Windows drive letters.
