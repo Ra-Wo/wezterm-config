@@ -4,20 +4,6 @@ A high-performance, aesthetically refined [WezTerm](https://wezfurlong.org/wezte
 
 ---
 
-## 📖 About
-
-This project provides an opinionated, production-ready configuration for **WezTerm** on Windows, macOS, and Linux. Built with a focus on visual elegance, speed, and workflow efficiency, it turns WezTerm into a modern developer workbench.
-
-### Key Highlights:
-- **🎨 Dracula Design System**: Unified Dracula color scheme matching `#282a36` across active panes, window frame titlebars, and status bars for a cohesive look without distraction.
-- **⚡ Hardware Acceleration**: Utilizes `WebGpu` rendering locked at 60 FPS with 10,000 lines of scrollback buffer and automatic configuration reloading.
-- **🔤 Modern Typography**: Configured with font fallback hierarchy supporting `JetBrains Mono`, `JetBrainsMono Nerd Font`, `FiraCode Nerd Font`, and `Symbols Nerd Font Mono` with HarfBuzz ligatures (`calt`, `clig`, `liga`, `zero`).
-- **📊 Custom Pill Tab & Status Bar**: Placed cleanly at the bottom (`tab_bar_at_bottom = true`) featuring dynamic process detection icons (Git Bash, PowerShell, CMD, WSL, Node, Python, Neovim), path truncation, Leader status indicators, and active workspace tracking.
-- **🔔 Screen Alert Focus**: Automatically brings the terminal window to the front across all monitors when a terminal bell sequence (`\a`) occurs, combined with system sound notification (`SystemBeep`).
-- **🗂️ Workspace Architecture**: Full lifecycle management for WezTerm workspaces with one-touch creation, switching, renaming, and workspace termination.
-
----
-
 ## 🔑 Keys & Keybindings
 
 Below is the complete map of custom keyboard shortcuts configured in this setup.
