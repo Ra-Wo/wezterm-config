@@ -40,7 +40,30 @@ config.scrollback_lines = 10000
 config.automatically_reload_config = true
 
 if wezterm.target_triple:find("windows") then
-  config.default_prog = { 'C:\\Program Files\\Git\\bin\\bash.exe', '-l' }
+  -- Look for Git Bash across common Windows installation paths;
+  -- if not installed, WezTerm gracefully defaults to PowerShell.
+  local function file_exists(path)
+    local f = io.open(path, 'r')
+    if f ~= nil then
+      io.close(f)
+      return true
+    end
+    return false
+  end
+
+  local git_bash_paths = {
+    'C:\\Program Files\\Git\\bin\\bash.exe',
+    'C:\\Program Files (x86)\\Git\\bin\\bash.exe',
+    (os.getenv('LOCALAPPDATA') or '') .. '\\Programs\\Git\\bin\\bash.exe',
+    (os.getenv('USERPROFILE') or '') .. '\\scoop\\apps\\git\\current\\bin\\bash.exe',
+  }
+
+  for _, path in ipairs(git_bash_paths) do
+    if file_exists(path) then
+      config.default_prog = { path, '-l' }
+      break
+    end
+  end
 end
 
 -- ----------------------------------------------------------------------------
@@ -327,10 +350,14 @@ config.keys = {
 -- ----------------------------------------------------------------------------
 -- 6. Command Palette Customization & Custom Actions
 -- ----------------------------------------------------------------------------
-config.command_palette_font = wezterm.font_with_fallback {
-  { family = 'JetBrains Mono', weight = 'Medium' },
-  { family = 'JetBrainsMono Nerd Font', weight = 'Medium' },
-}
+-- Note: command_palette_font is only supported in WezTerm nightly builds;
+-- on stable builds, the palette inherits window_frame.font. pcall prevents crashes on stable.
+pcall(function()
+  config.command_palette_font = wezterm.font_with_fallback {
+    { family = 'JetBrains Mono', weight = 'Medium' },
+    { family = 'JetBrainsMono Nerd Font', weight = 'Medium' },
+  }
+end)
 config.command_palette_font_size = 11.0
 config.command_palette_rows = 12
 config.command_palette_bg_color = '#282a36'
